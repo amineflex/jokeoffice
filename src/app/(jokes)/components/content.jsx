@@ -1,6 +1,5 @@
 "use client"
 
-import Joke from "./joke";
 
 import { useEffect, useState } from "react";
 import Joke from "./joke";
