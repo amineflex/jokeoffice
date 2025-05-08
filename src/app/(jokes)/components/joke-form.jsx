@@ -70,6 +70,7 @@ export default function JokeForm() {
                 placeholder="Ruben"
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
+                required
               />
             </div>
             <div className="grid gap-2">
@@ -79,6 +80,7 @@ export default function JokeForm() {
                 placeholder="Il est grand ce frais!"
                 value={content}
                 onChange={(e) => setContent(e.target.value)}
+                required
               ></Textarea>
             </div>
           </CardContent>
