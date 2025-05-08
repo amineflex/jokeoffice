@@ -3,7 +3,7 @@ import Link from "next/link";
 
 import { ArrowLeft } from "lucide-react";
 
-export default function Home({ params }: { params: { username: string } }) {
+export default function Home({ params }) {
   const { username } = params;
   return (
     <div className="flex justify-center items-center min-h-svh">
