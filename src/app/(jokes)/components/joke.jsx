@@ -14,14 +14,12 @@ export default function Joke({joke}) {
         </div>
         <div className="flex ml-auto space-x-1">
           <Button
-            size="icon"
             variant="ghost"
             className="text-foreground/75 hover:text-green-500 px-1"
           >
             <Smile /> <small className="text-foreground/50">{joke.likes}</small>
           </Button>
           <Button
-            size="icon"
             variant="ghost"
             className="text-foreground/75 hover:text-red-500 px-1"
           >
