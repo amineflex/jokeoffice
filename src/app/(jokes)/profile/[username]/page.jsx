@@ -11,8 +11,8 @@ export default function Home({ params }) {
         <div className="p-4 rounded-xl border">
             <div className="flex items-center space-x-2">
                 <Link href="/" className="text-foreground/75 hover:text-white"><ArrowLeft /></Link>
+                <h1 className="text-2xl font-bold"><span className="text-gray-500">@</span>{decodeURIComponent(username)}</h1>
             </div>
-            <h1 className="text-2xl font-bold"><span className="text-gray-500">@</span>{username}</h1>
         </div>
         <Content username={username} />
       </div>

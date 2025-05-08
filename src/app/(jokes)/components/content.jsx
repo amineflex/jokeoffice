@@ -2,6 +2,7 @@
 
 
 import { useEffect, useState } from "react";
+import { LoaderCircle } from "lucide-react";
 import Joke from "./joke";
 
 export default function Content({ username }) {
@@ -46,7 +47,10 @@ export default function Content({ username }) {
     <div className="grid gap-2 p-2 rounded-xl border bg-card">
       {jokes.length === 0 ? (
         <div className="p-4 rounded-xl border bg-card text-center">
-          <p className="text-sm text-foreground/75">Aucune blague trouvée</p>
+          <div className="flex items-center justify-center gap-2">
+            <LoaderCircle className="w-6 h-6 animate-spin" /> 
+            <p className="text-sm text-foreground/75">Chargement des blagues...</p>
+          </div>
         </div>
       ) : (
         jokes.map((joke) => <Joke key={joke.id} joke={joke} />)
