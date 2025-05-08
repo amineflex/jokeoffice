@@ -1,6 +1,6 @@
 import Joke from "./joke";
 
-export default async function Content({username}: { username: string }) {
+export default async function Content({username}) {
 
   // Fetch jokes from the API
 
