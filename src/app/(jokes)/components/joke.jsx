@@ -94,7 +94,7 @@ export default function Joke({ joke }) {
             onClick={handleLike}
             variant="ghost"
             className={`text-foreground/75 px-1 ${
-              liked ? "text-green-500" : "hover:text-green-500"
+              liked = "text-green-500 hover:text-green-500"
             }`}
           >
             <Smile /> <small className="text-foreground/50">{joke.likes}</small>
