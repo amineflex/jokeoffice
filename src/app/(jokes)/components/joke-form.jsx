@@ -22,7 +22,7 @@ export default function JokeForm() {
   const [showForm, setshowForm] = useState(false);
 
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     const response = await fetch("http://localhost:3000/api/joke", {
@@ -34,6 +34,7 @@ export default function JokeForm() {
     });
 
     if (response.ok) {
+      setshowForm(false);
       alert("Blague ajoutée avec succès !");
       setUsername("");
       setContent("");
