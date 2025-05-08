@@ -103,7 +103,7 @@ export default function Joke({ joke }) {
             onClick={handleDislike}
             variant="ghost"
             className={`text-foreground/75 px-1 ${
-              disliked ? "text-red-500" : "hover:text-red-500"
+              disliked ? "text-red-500 hover:text-red-500" : "hover:text-red-500"
             }`}
           >
             <Angry />{" "}
