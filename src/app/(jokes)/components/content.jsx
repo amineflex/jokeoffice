@@ -1,49 +1,57 @@
+"use client"
+
 import Joke from "./joke";
 
-export default async function Content({username}) {
+import { useEffect, useState } from "react";
+import Joke from "./joke";
 
-  // Fetch jokes from the API
+export default function Content({ username }) {
+  const [jokes, setJokes] = useState([]);
+  const [error, setError] = useState(null);
 
-  const endpoint = process.env.NEXT_PUBLIC_API_BASE_URL
-  const route = username ? `/api/jokes/${username}` : '/api/jokes';
+  useEffect(() => {
+    const fetchJokes = async () => {
+      const endpoint = process.env.NEXT_PUBLIC_API_BASE_URL;
+      const route = username ? `/api/jokes/${username}` : "/api/jokes";
 
-  
-  try {
-  const res = await fetch(endpoint + route, {
-    method: 'GET',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-  });
-  const jokes = await res.json();
-  jokes.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+      try {
+        const res = await fetch(endpoint + route, {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        });
+        const data = await res.json();
+        data.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+        setJokes(data);
+      } catch (err) {
+        console.error("Error fetching jokes:", err);
+        setError(err);
+      }
+    };
 
-  return (
+    fetchJokes();
+  }, [username]);
 
-
-    <div className="grid gap-2 p-2 rounded-xl border bg-card">
-      {(jokes.length === 0)? (
-        <div className="p-4 rounded-xl border bg-card text-center">
-          <p className="text-sm text-foreground/75">Aucune blague trouvée</p>
-        </div>
-      ) : (
-        jokes.map((joke) => (
-          <Joke key={joke.id} joke={joke} />
-        ))
-      )}
-
-    </div>
-  );
-  
-  }
-  catch (error) {
-    console.error('Error fetching jokes:', error);
+  if (error) {
     return (
       <div className="p-4 rounded-xl border bg-card text-center">
-        <p className="text-sm text-foreground/75">Erreur lors de la récupération des blagues</p>
+        <p className="text-sm text-foreground/75">
+          Erreur lors de la récupération des blagues
+        </p>
       </div>
     );
   }
 
-
+  return (
+    <div className="grid gap-2 p-2 rounded-xl border bg-card">
+      {jokes.length === 0 ? (
+        <div className="p-4 rounded-xl border bg-card text-center">
+          <p className="text-sm text-foreground/75">Aucune blague trouvée</p>
+        </div>
+      ) : (
+        jokes.map((joke) => <Joke key={joke.id} joke={joke} />)
+      )}
+    </div>
+  );
 }
