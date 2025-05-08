@@ -86,6 +86,9 @@ Prisma.NullTypes = {
  * Enums
  */
 exports.Prisma.TransactionIsolationLevel = makeStrictEnum({
+  ReadUncommitted: 'ReadUncommitted',
+  ReadCommitted: 'ReadCommitted',
+  RepeatableRead: 'RepeatableRead',
   Serializable: 'Serializable'
 });
 
@@ -103,6 +106,11 @@ exports.Prisma.SortOrder = {
   desc: 'desc'
 };
 
+exports.Prisma.QueryMode = {
+  default: 'default',
+  insensitive: 'insensitive'
+};
+
 
 exports.Prisma.ModelName = {
   Joke: 'Joke'
@@ -118,7 +126,7 @@ const config = {
       "value": "prisma-client-js"
     },
     "output": {
-      "value": "C:\\jokeoffice\\generated\\prisma",
+      "value": "/Users/ilyasayachi/Documents/jokeoffice/generated/prisma",
       "fromEnvVar": null
     },
     "config": {
@@ -127,12 +135,12 @@ const config = {
     "binaryTargets": [
       {
         "fromEnvVar": null,
-        "value": "windows",
+        "value": "darwin-arm64",
         "native": true
       }
     ],
     "previewFeatures": [],
-    "sourceFilePath": "C:\\jokeoffice\\prisma\\schema.prisma",
+    "sourceFilePath": "/Users/ilyasayachi/Documents/jokeoffice/prisma/schema.prisma",
     "isCustomOutput": true
   },
   "relativeEnvPaths": {
@@ -145,18 +153,17 @@ const config = {
   "datasourceNames": [
     "db"
   ],
-  "activeProvider": "sqlite",
-  "postinstall": false,
+  "activeProvider": "postgresql",
   "inlineDatasources": {
     "db": {
       "url": {
         "fromEnvVar": "DATABASE_URL",
-        "value": null
+        "value": "postgres://neondb_owner:npg_lpCmDn08MBYu@ep-little-grass-a259kks7-pooler.eu-central-1.aws.neon.tech/neondb?sslmode=require"
       }
     }
   },
-  "inlineSchema": "// This is your Prisma schema file,\n// learn more about it in the docs: https://pris.ly/d/prisma-schema\n\ngenerator client {\n  provider = \"prisma-client-js\"\n  output   = \"../generated/prisma\"\n}\n\ndatasource db {\n  provider = \"sqlite\"\n  url      = env(\"DATABASE_URL\")\n}\n\nmodel Joke {\n  id        Int      @id @default(autoincrement())\n  username  String\n  content   String\n  createdAt DateTime @default(now())\n  likes     Int      @default(0)\n  dislikes  Int      @default(0)\n}\n",
-  "inlineSchemaHash": "e7ee83e10c8d368c1cb82704ef301db30c890d0d83d0d2c26aa782a6643bebe7",
+  "inlineSchema": "// This is your Prisma schema file,\n// learn more about it in the docs: https://pris.ly/d/prisma-schema\n\n// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?\n// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init\n\ngenerator client {\n  provider = \"prisma-client-js\"\n  output   = \"../generated/prisma\"\n}\n\ndatasource db {\n  provider = \"postgresql\"\n  url      = env(\"DATABASE_URL\")\n}\n\nmodel Joke {\n  id        Int      @id @default(autoincrement())\n  username  String\n  content   String\n  createdAt DateTime @default(now())\n  likes     Int      @default(0)\n  dislikes  Int      @default(0)\n}\n",
+  "inlineSchemaHash": "c0df3fa95f1b444a8b68eadf9c31a52e4c0cdfb3064cfb008d2cb64f5a2bc19f",
   "copyEngine": true
 }
 config.dirname = '/'
