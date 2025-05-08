@@ -5,6 +5,8 @@ export async function GET(req: Request, { params }: { params: { id: string } }) 
 
     const prisma = new PrismaClient()
 
+    console.log(req)
+
     async function getJoke() {
         const joke = await prisma.joke.findUnique({
             where: {

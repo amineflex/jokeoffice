@@ -4,6 +4,7 @@ import { PrismaClient } from '../../../../../generated/prisma'
 export async function GET(req: Request, { params }: { params: { username: string } }) {
     
     const prisma = new PrismaClient()
+    console.log(req)
 
     async function getJokesByUsername() {
         const jokes = await prisma.joke.findMany({
