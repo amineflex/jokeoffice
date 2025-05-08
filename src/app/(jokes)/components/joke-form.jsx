@@ -12,6 +12,7 @@ import { Plus } from "lucide-react";
 
 import { Input } from "@/components/ui/input";  
 import { Textarea } from "@/components/ui/textarea";
+import { Label } from "@/components/ui/label";
 
 
 
@@ -48,7 +49,7 @@ export default function JokeForm() {
       <Button onClick={() => setshowForm(!showForm)}>
       <Plus />
 
-       Ajouter une blague
+        Ajouter une blague
       </Button>
 
     {showForm && (
@@ -57,23 +58,25 @@ export default function JokeForm() {
         <form onSubmit={handleSubmit}>
           <CardHeader className="flex flex-col items-start space-y-1">
             <CardTitle>Nouvelle blague</CardTitle>
-            <CardDescription>Ajoute ta nouvelle masterclass ici</CardDescription>
+            <CardDescription>Entrez votre nom d'utilisateur ainsi que votre blague pour ajouter une nouvelle blague</CardDescription>
           </CardHeader>
 
           <CardContent className="grid gap-4 py-6">
             <div className="grid gap-2">
+              <Label>Nom d'utilisateur</Label>
               <Input
                 type="text"
                 id="username"
-                placeholder="goatmine"
+                placeholder="Ruben"
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
               />
             </div>
             <div className="grid gap-2">
+              <Label>Blague</Label>
               <Textarea
                 id="content"
-                placeholder="prout mdrrrr"
+                placeholder="Il est grand ce frais!"
                 value={content}
                 onChange={(e) => setContent(e.target.value)}
               ></Textarea>
