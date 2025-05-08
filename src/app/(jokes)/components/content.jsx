@@ -8,6 +8,7 @@ export default async function Content({username}) {
   const route = username ? `/api/jokes/${username}` : '/api/jokes';
 
   
+  try {
   const res = await fetch(endpoint + route, {
     method: 'GET',
     headers: {
@@ -15,11 +16,7 @@ export default async function Content({username}) {
     },
   });
   const jokes = await res.json();
-
-  
   jokes.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
-  
-
 
   return (
 
@@ -37,4 +34,16 @@ export default async function Content({username}) {
 
     </div>
   );
+  
+  }
+  catch (error) {
+    console.error('Error fetching jokes:', error);
+    return (
+      <div className="p-4 rounded-xl border bg-card text-center">
+        <p className="text-sm text-foreground/75">Erreur lors de la récupération des blagues</p>
+      </div>
+    );
+  }
+
+
 }
