@@ -14,6 +14,10 @@ export default async function Content({username}) {
   });
   const jokes = await res.json();
 
+  
+  jokes.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+  
+
 
   return (
 
