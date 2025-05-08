@@ -16,10 +16,39 @@ export default function Joke({joke}) {
           <Button
             variant="ghost"
             className="text-foreground/75 hover:text-green-500 px-1"
+            onClick={async () => {
+              const endpoint = process.env.NEXT_PUBLIC_API_BASE_URL;
+              const route = `/api/votes/like/${joke.id}`;
+              const res = await fetch(endpoint + route, {
+                method: "POST",
+                headers: {
+                  "Content-Type": "application/json",
+                },
+                body: JSON.stringify({ like: true }),
+              });
+              if (!res.ok) {
+                console.error("Error liking joke:", res.statusText);
+              }
+            }
+          }
           >
             <Smile /> <small className="text-foreground/50">{joke.likes}</small>
           </Button>
           <Button
+            onClick={async () => {
+              const endpoint = process.env.NEXT_PUBLIC_API_BASE_URL;
+              const route = `/api/votes/dislike/${joke.id}`;
+              const res = await fetch(endpoint + route, {
+                method: "POST",
+                headers: {
+                  "Content-Type": "application/json",
+                },
+                body: JSON.stringify({ like: false }),
+              });
+              if (!res.ok) {
+                console.error("Error disliking joke:", res.statusText);
+              }
+            }}
             variant="ghost"
             className="text-foreground/75 hover:text-red-500 px-1"
           >

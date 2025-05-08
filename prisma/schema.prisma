@@ -22,3 +22,13 @@ model Joke {
   likes      Int      @default(0)
   dislikes   Int      @default(0)
 }
+
+model Vote {
+  id        Int      @id @default(autoincrement())
+  postId    Int
+  ipAddress String
+  type      String // "like" ou "dislike"
+  createdAt DateTime @default(now())
+
+  @@unique([postId, ipAddress]) // Empêche les doublons pour un post et une IP
+}

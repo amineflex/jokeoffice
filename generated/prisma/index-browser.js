@@ -129,6 +129,14 @@ exports.Prisma.JokeScalarFieldEnum = {
   dislikes: 'dislikes'
 };
 
+exports.Prisma.VoteScalarFieldEnum = {
+  id: 'id',
+  postId: 'postId',
+  ipAddress: 'ipAddress',
+  type: 'type',
+  createdAt: 'createdAt'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -141,7 +149,8 @@ exports.Prisma.QueryMode = {
 
 
 exports.Prisma.ModelName = {
-  Joke: 'Joke'
+  Joke: 'Joke',
+  Vote: 'Vote'
 };
 
 /**
