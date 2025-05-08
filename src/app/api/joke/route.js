@@ -1,7 +1,7 @@
 import { PrismaClient } from '../../../../generated/prisma'
 
 
-export async function POST(req: Request) {
+export async function POST(req) {
 
     // get the body of the requesta
     const requestBody = await req.json()

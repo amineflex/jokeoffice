@@ -1,7 +1,7 @@
 import { PrismaClient } from '../../../../../generated/prisma'
 
 
-export async function GET(req: Request, { params }) {
+export async function GET(req, { params }) {
     
     const prisma = new PrismaClient()
     console.log(req)

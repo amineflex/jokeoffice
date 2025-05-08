@@ -2,7 +2,7 @@ import { PrismaClient } from '../../../../generated/prisma'
 
 
 
-export async function GET(req: Request) {
+export async function GET(req) {
     const prisma = new PrismaClient()
 
     async function getJokes() {
