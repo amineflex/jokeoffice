@@ -53,7 +53,10 @@ export default function Content({ username }) {
           </div>
         </div>
       ) : (
-        jokes.map((joke) => <Joke key={joke.id} joke={joke} />)
+        <>
+        <span className="text-lg font-semibold p-2">{jokes.length} blagues postées </span>
+        {jokes.map((joke) => <Joke key={joke.id} joke={joke} />)}
+        </>
       )}
     </div>
   );

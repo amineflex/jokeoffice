@@ -44,6 +44,24 @@ export async function POST(request, { params }) {
                         dislikes: type === 'dislike' ? joke.dislikes + 1 : joke.dislikes - 1,
                     },
                 });
+            } else {
+               // remove the vote if the type is the same
+                await prisma.vote.delete({
+                    where: {
+                        id: existingVote.id,
+                    },
+                });
+
+                // Adjust joke's like/dislike count based on the removed vote
+                await prisma.joke.update({
+                    where: {
+                        id: parseInt(id),
+                    },
+                    data: {
+                        likes: type === 'like' ? joke.likes - 1 : joke.likes,
+                        dislikes: type === 'dislike' ? joke.dislikes - 1 : joke.dislikes,
+                    },
+                });
             }
 
             console.log(updatedVote);
