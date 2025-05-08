@@ -25,7 +25,7 @@ export default function JokeForm() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const response = await fetch("http://localhost:3000/api/joke", {
+    const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/joke`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

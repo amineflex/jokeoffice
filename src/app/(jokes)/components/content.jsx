@@ -4,9 +4,11 @@ export default async function Content({username}) {
 
   // Fetch jokes from the API
 
+  const endpoint = process.env.NEXT_PUBLIC_API_BASE_URL
   const route = username ? `/api/jokes/${username}` : '/api/jokes';
+
   
-  const res = await fetch('http://localhost:3000/' + route, {
+  const res = await fetch(endpoint + route, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
