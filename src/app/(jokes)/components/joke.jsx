@@ -74,7 +74,7 @@ export default function Joke({ joke }) {
 
   return (
     <div className="p-4 border rounded-xl">
-      <p className="font-medium"><span className="font-bold text-amber-500">#{joke.id}<span/>{" "}{joke.content}</p>
+      <p className="font-medium"><span className="font-bold text-amber-500">#{joke.id}</span>{" "}{joke.content}</p>
       <div className="flex items-center">
         <div>
           <Link
