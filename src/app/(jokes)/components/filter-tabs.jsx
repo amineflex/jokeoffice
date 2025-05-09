@@ -7,15 +7,15 @@ export default function FilterTabs() {
       <TabsList className="p-0">
         <TabsTrigger value="recent" className="h-9">
           <Clock />
-          Récent
+          Récentes
         </TabsTrigger>
         <TabsTrigger value="appreciated" className="h-9">
           <Smile />
-          Apprécié
+          Appréciées
         </TabsTrigger>
         <TabsTrigger value="hated" className="h-9">
           <Angry />
-          Détesté
+          Détestées
         </TabsTrigger>
       </TabsList>
     </Tabs>
