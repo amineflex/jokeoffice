@@ -86,11 +86,11 @@ export default function Joke({ joke }) {
           </Link>{" "}
           ·{" "}
           <small className="text-foreground/50">
-            {new Date(joke.createdAt).toLocaleString()}
-          </small>
+            #{joke.id}
+          </small>{" "}
           ·{" "}
           <small className="text-foreground/50">
-            {joke.id}
+            {new Date(joke.createdAt).toLocaleString()}
           </small>
         </div>
         <div className="flex ml-auto space-x-1">
