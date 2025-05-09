@@ -16,22 +16,32 @@ export async function POST(req) {
     console.log(joke);
 
     if (process.env.DISCORD_WEBHOOK_URL) {
+      console.log("Webhook URL trouvée, tentative d'envoi...");
       try {
         const webhookData = {
           content: `**Nouvelle blague de @${username}**\n${content}`,
           username: "JokeOffice",
         };
 
-        await fetch(process.env.DISCORD_WEBHOOK_URL, {
+        console.log("Données du webhook:", webhookData);
+
+        const response = await fetch(process.env.DISCORD_WEBHOOK_URL, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
           },
           body: JSON.stringify(webhookData),
         });
+
+        console.log("Réponse du webhook:", response.status, response.statusText);
+        const responseData = await response.text();
+        console.log("Contenu de la réponse:", responseData);
+
       } catch (error) {
-        console.error("Error sending to Discord:", error);
+        console.error("Erreur détaillée lors de l'envoi vers Discord:", error);
       }
+    } else {
+      console.log("Aucune URL de webhook trouvée dans les variables d'environnement");
     }
 
     return joke;
