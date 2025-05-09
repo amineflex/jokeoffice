@@ -74,7 +74,7 @@ export default function Joke({ joke }) {
 
   return (
     <div className="p-4 border rounded-xl">
-      <p className="font-medium">{joke.content}</p>
+      <p className="font-medium"><span className="font-bold text-amber-500">#{joke.id}<span/>{" "}{joke.content}</p>
       <div className="flex items-center">
         <div>
           <Link
@@ -84,10 +84,6 @@ export default function Joke({ joke }) {
             <span className="text-gray-500">@</span>
             {joke.username}
           </Link>{" "}
-          ·{" "}
-          <small className="text-foreground/50">
-            #{joke.id}
-          </small>{" "}
           ·{" "}
           <small className="text-foreground/50">
             {new Date(joke.createdAt).toLocaleString()}
