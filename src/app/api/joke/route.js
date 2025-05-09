@@ -19,8 +19,8 @@ export async function POST(req) {
       console.log("Webhook URL trouvée, tentative d'envoi...");
       try {
         const webhookData = {
-          content: `**Nouvelle blague de @${username}**\n${content}`,
-          username: "JokeOffice",
+          content: `${content}`,
+          username: `${username}`,
         };
 
         console.log("Données du webhook:", webhookData);
