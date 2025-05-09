@@ -88,6 +88,10 @@ export default function Joke({ joke }) {
           <small className="text-foreground/50">
             {new Date(joke.createdAt).toLocaleString()}
           </small>
+          ·{" "}
+          <small className="text-foreground/50">
+            {joke.id}
+          </small>
         </div>
         <div className="flex ml-auto space-x-1">
           <Button
