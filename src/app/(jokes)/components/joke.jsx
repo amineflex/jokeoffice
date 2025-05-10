@@ -74,7 +74,23 @@ export default function Joke({ joke }) {
 
   return (
     <div className="p-4 border rounded-xl">
-      <p className="font-medium"><span className="font-bold text-amber-500">#{joke.id}</span>{" "}{joke.content}</p>
+      <p className="font-medium">
+        <span className="font-bold text-amber-500">#{joke.id}</span>{" "}
+        
+        {joke.content.includes("memebank.lol") ? (
+          <>
+          {joke.content}
+          <iframe
+            src={joke.content.match(/https?:\/\/memebank\.lol[^\s]*/)[0]}
+            className="w-full h-64 border rounded-md my-3 bg-card"
+            title={`Embedded content for joke ${joke.id}`}
+          ></iframe>
+          </>
+        ) : (
+          joke.content
+        )}
+        
+      </p>
       <div className="flex items-center">
         <div>
           <Link
