@@ -13,7 +13,7 @@ export default function Leaderboard() {
 
     useEffect(() => {
         const fetchTop = async () => {
-            const endpoint = process.env.NEXT_PUBLIC_API_BASE_URL || "http://localhost:3000";
+            const endpoint = process.env.NEXT_PUBLIC_API_BASE_URL;
             const route = "/api/stats/top";
 
             try {

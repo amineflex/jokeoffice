@@ -5,7 +5,7 @@ import Link from "next/link";
 
 interface NavProps {
     href: string;
-    icon: any;
+    icon: React.ReactNode;
     label: string;
     isActive?: boolean;
     className?: string;
