@@ -31,7 +31,14 @@ export async function GET(req) {
 
         const totalCount = await prisma.joke.count()
 
-        return { counts, totalCount }
+        // Count unique users who have created jokes
+        const uniqueUsers = await prisma.joke.findMany({
+            distinct: ['username'],
+            select: { username: true },
+        })
+        const uniqueUserCount = uniqueUsers.length
+
+        return { counts, totalCount, uniqueUserCount }
     }
 
     try {
